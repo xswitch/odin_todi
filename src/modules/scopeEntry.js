@@ -1,3 +1,3 @@
-export default function createScope(name, rate, scope = false) {
+export default function createScope(name, rate, scope = false, day = false) {
     return {name, rate, scope}
 }
