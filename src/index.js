@@ -4,8 +4,8 @@ import createScope from './modules/scopeEntry';
 import { sumAllEntries } from './modules/payCalc';
 
 const workEntries = [
-    new WorkEntry('2024-03-10', 1000, 2200),
-    new WorkEntry('2024-03-15', 800, 1800),
+    new WorkEntry('2024-03-9', 1000, 2200),
+    new WorkEntry('2024-03-10', 800, 1800),
 ];
 
 const scopes = [
