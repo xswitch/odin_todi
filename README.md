@@ -6,11 +6,12 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 7.5 = 7 + 0.5*60
 730 = 7 + 30/60
 
-> Refactor workEntry to use dates in startTime and endTime for easier use
->> Have getters that give numeric values of dates
->> getter for difference in time as well
-
-> Skeleton page to test functionality some more
+> Add a function to erase a page
+> Add a controller
+>> Change page
+>> Get current page
+>> Store categories, entries and scopes
+>> 
 
 > Sorting of entries based on weeks or months
 >> Sort based on best paid day

@@ -1,28 +1,114 @@
 import createHome from "../pages/home";
+import El from "./createEl";
+import ThisWeekIcon from "../../img/week.svg"
+import ThisMonthIcon from "../../img/month.svg"
+import LastMonthIcon from "../../img/lastmonth.svg"
+import ThisYearIcon from "../../img/year.svg"
+import TotalIcon from "../../img/total.svg"
 
-function setUpCategory() {
 
-}
 
-function setUpButtons(category) {
-    const buttons = {
+function setUpCategory(category) {
+    const navContainer = document.querySelector('.sideBar>main');
+    const categoryLabel = new El('div',{
+        classes: 'navLabel',
+        parent: navContainer,
+        text: category.toUpperCase(),
+    })
+    const categorySingleString = category.replace(' ', '')
+
+    const categoryButtons = {
         thisWeek: {
-            title: 'THIS WEEK',
+            button: new El('button', {
+                classes: `navButton ${categorySingleString}Week`,
+                parent: navContainer,
+            }),
         },
         thisMonth: {
-            title: 'THIS MONTH',
+            button: new El('button', {
+                classes: `navButton ${categorySingleString}Month`,
+                parent: navContainer,
+            }),
         },
         lastMonth: {
-            title: 'LAST MONTH',
+            button: new El('button', {
+                classes: `navButton ${categorySingleString}LastMonth`,
+                parent: navContainer,
+            }),
         },
         thisYear: {
-            title: 'THIS YEAR',
+            button: new El('button', {
+                classes: `navButton ${categorySingleString}Year`,
+                parent: navContainer,
+            }),
         },
         total: {
-            title: 'TOTAL',
-        }
+            button: new El('button', {
+                classes: `navButton ${categorySingleString}Total`,
+                parent: navContainer,
+            }),
+        },
     }
 
+    // THIS WEEK
+    categoryButtons.thisWeek.image = new El('img', {
+        classes: 'navImg',
+        parent: categoryButtons.thisWeek.button.element,
+        properties: {src: ThisWeekIcon},
+    })
+    categoryButtons.thisWeek.label = new El('span', {
+        text: 'THIS WEEK',
+        parent: categoryButtons.thisWeek.button.element,
+    })
+
+    // THIS MONTH
+    categoryButtons.thisMonth.image = new El('img', {
+        classes: 'navImg',
+        parent: categoryButtons.thisMonth.button.element,
+        properties: {src: ThisMonthIcon},
+    })
+    categoryButtons.thisMonth.label = new El('span', {
+        text: 'THIS MONTH',
+        parent: categoryButtons.thisMonth.button.element,
+    })
+
+    // LAST MONTH
+    categoryButtons.lastMonth.image = new El('img', {
+        classes: 'navImg',
+        parent: categoryButtons.lastMonth.button.element,
+        properties: {src: LastMonthIcon},
+    })
+    categoryButtons.lastMonth.label = new El('span', {
+        text: 'LAST MONTH',
+        parent: categoryButtons.lastMonth.button.element,
+    })
+
+    // YEAR
+    categoryButtons.thisYear.image = new El('img', {
+        classes: 'navImg',
+        parent: categoryButtons.thisYear.button.element,
+        properties: {src: ThisYearIcon},
+    })
+    categoryButtons.thisYear.label = new El('span', {
+        text: 'THIS YEAR',
+        parent: categoryButtons.thisYear.button.element,
+    })
+
+    // TOTAL
+    categoryButtons.total.image = new El('img', {
+        classes: 'navImg',
+        parent: categoryButtons.total.button.element,
+        properties: {src: TotalIcon},
+    })
+    categoryButtons.total.label = new El('span', {
+        text: 'TOTAL',
+        parent: categoryButtons.total.button.element,
+    })
+
+    return [categoryLabel, categoryButtons]
+}
+
+function setUpButtonsClassToggle() {
     const allButtons = document.querySelectorAll('.navButton');
 
     allButtons.forEach(button => {
@@ -34,8 +120,6 @@ function setUpButtons(category) {
             })
         })
     })
-
-    return {buttons}
 }
 
-export {setUpButtons}
+export {setUpButtonsClassToggle, setUpCategory}
