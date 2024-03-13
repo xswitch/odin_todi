@@ -1,9 +1,10 @@
 export default class WorkEntry {
-    constructor(date, fromTime, toTime, project = "default") {
+    constructor(date, fromTime, toTime, project = 'default') {
         this.date = new Date(date);
         this.fromTime = new Date(`${date} ${fromTime}`);
-        this.toTime = new Date(`${date} ${toTime}`)
-        this.day = this.date.getDay()
+        this.toTime = new Date(`${date} ${toTime}`);
+        this.day = this.date.getDay();
+        (project == 'default') ? this.project = ['default'] : this.project = ['default', project];
     }
 
     get totalHours () {
@@ -20,6 +21,10 @@ export default class WorkEntry {
 
     get numericEndTime() {
         return (this.toTime.getHours() + this.toTime.getMinutes()/60)*100
+    }
+
+    get projectsArray() {
+        return this.project;
     }
 
 }

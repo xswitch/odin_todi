@@ -20,31 +20,31 @@ function setUpCategory(category) {
     const categoryButtons = {
         thisWeek: {
             button: new El('button', {
-                classes: `navButton ${categorySingleString}Week`,
+                classes: `navButton projectButton`,
                 parent: navContainer,
             }),
         },
         thisMonth: {
             button: new El('button', {
-                classes: `navButton ${categorySingleString}Month`,
+                classes: `navButton projectButton`,
                 parent: navContainer,
             }),
         },
         lastMonth: {
             button: new El('button', {
-                classes: `navButton ${categorySingleString}LastMonth`,
+                classes: `navButton projectButton`,
                 parent: navContainer,
             }),
         },
         thisYear: {
             button: new El('button', {
-                classes: `navButton ${categorySingleString}Year`,
+                classes: `navButton projectButton`,
                 parent: navContainer,
             }),
         },
         total: {
             button: new El('button', {
-                classes: `navButton ${categorySingleString}Total`,
+                classes: `navButton projectButton`,
                 parent: navContainer,
             }),
         },
@@ -122,4 +122,32 @@ function setUpButtonsClassToggle() {
     })
 }
 
-export {setUpButtonsClassToggle, setUpCategory}
+function resetPage() {
+    const pageParent = document.querySelector('.page')
+    document.querySelector('.pageHeader').remove();
+    document.querySelector('.pageContent').remove();
+    new El('div', {
+        classes: 'pageHeader',
+        parent: pageParent,
+    })
+    new El('div', {
+        classes: 'pageContent',
+        parent: pageParent,
+    })
+}
+
+function createStoredCategories(categoriesArray) {
+    categoriesArray.forEach(category => {
+        setUpCategory(category)
+    })
+}
+
+(function() {
+    const homeButton = document.querySelector('.homeButton');
+    homeButton.addEventListener('click', () => {
+        resetPage()
+        createHome();
+    })
+})()
+
+export {setUpButtonsClassToggle, resetPage, createStoredCategories}

@@ -1,17 +1,20 @@
 import WorkEntry from './modules/workEntry';
 import createScope from './modules/scopeEntry';
 import './style.css';
-import { setUpButtonsClassToggle, setUpCategory } from './modules/domStuff/navigation';
+import { createStoredCategories, setUpButtonsClassToggle, setUpCategory } from './modules/domStuff/navigation';
+import createCategory from './modules/categoryEntry';
 
 const controller = (function () {
+    let currentPage = ['home', 'default'];
     const workEntries = [
-        new WorkEntry('2024-03-10', '10:30', '20:30'),
-        new WorkEntry('2024-03-10', '08:00', '18:00'),
+        new WorkEntry('2024-03-10', '10:30', '20:30', 'blåsenborg'),
+        new WorkEntry('2024-03-10', '08:00', '18:00', 'blåsenborg'),
     ];
     
     const categories = [
-        'All Projects',
-        'blåsenborg',
+        createCategory('All Projects', true),
+        createCategory('Blåsenborg'),
+        createCategory('Bryne')
     ]
     
     const scopes = [
@@ -22,7 +25,19 @@ const controller = (function () {
         createScope('Søn', 70, false, 0),
     ]
 
+    const getCurrentPage = () => {
+        return currentPage;
+    }
+
+    const changePage = (pageArray) => {
+        if (pageArray == currentPage) return;
+        currentPage = pageArray;
+    }
+
     return {workEntries, categories, scopes}
 })()
-setUpCategory(controller.categories[1])
+createStoredCategories(controller.categories)
 setUpButtonsClassToggle()
+
+console.log(controller.workEntries[0].projectsArray)
+console.log(controller.categories[1])
