@@ -1,8 +1,26 @@
-function setUpButtons() {
+import createHome from "../pages/home";
+
+function setUpCategory() {
+
+}
+
+function setUpButtons(category) {
     const buttons = {
-        home: document.querySelector('#homeButton'),
-        week: document.querySelector('#weekButton'),
-        month: document.querySelector('#monthButton')
+        thisWeek: {
+            title: 'THIS WEEK',
+        },
+        thisMonth: {
+            title: 'THIS MONTH',
+        },
+        lastMonth: {
+            title: 'LAST MONTH',
+        },
+        thisYear: {
+            title: 'THIS YEAR',
+        },
+        total: {
+            title: 'TOTAL',
+        }
     }
 
     const allButtons = document.querySelectorAll('.navButton');

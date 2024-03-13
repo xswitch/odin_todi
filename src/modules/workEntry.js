@@ -1,5 +1,5 @@
 export default class WorkEntry {
-    constructor(date, fromTime, toTime) {
+    constructor(date, fromTime, toTime, project = "default") {
         this.date = new Date(date);
         this.fromTime = new Date(`${date} ${fromTime}`);
         this.toTime = new Date(`${date} ${toTime}`)
