@@ -1,8 +1,7 @@
 import WorkEntry from './modules/workEntry';
-import './style.css';
 import createScope from './modules/scopeEntry';
-import { getPayInfo, sumAllEntries } from './modules/payCalc';
-import { timeInScope } from './modules/timeCalcs';
+import './style.css';
+import { setUpButtons } from './modules/domStuff/navigation';
 
 const workEntries = [
     new WorkEntry('2024-03-10', '10:30', '20:30'),
@@ -17,19 +16,4 @@ const scopes = [
     createScope('Søn', 70, false, 0),
 ]
 
-
-console.log(workEntries)
-
-
-
-
-document.querySelector('.getInfo').addEventListener('click', () => {
-    const dateInput = document.querySelector('.getDate').value
-    const startTimeInput = document.querySelector('.getStartTime').value
-    const endTimeInput = document.querySelector('.getEndTime').value
-
-    const startDate = new Date(`${dateInput} ${startTimeInput}`)
-    const endDate = new Date(`${dateInput} ${endTimeInput}`)
-    const difference = Math.abs(startDate - endDate)/3600000
-})
-
+setUpButtons()

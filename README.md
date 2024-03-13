@@ -15,4 +15,6 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 > Sorting of entries based on weeks or months
 >> Sort based on best paid day
 
+> Group based on work location or company
+
 > Overview of total hours and different benefits
