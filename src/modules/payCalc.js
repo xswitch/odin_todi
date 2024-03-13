@@ -13,10 +13,13 @@ function sumAllEntries(entryArray, scopeArray) {
 // Takes an array and entry and checks that entry with all scopes in array.
 function getPayInfo(entry, scopeArray) {
     let pay = {}
+
+    // Gets inside a scope
     scopeArray.forEach(currentScope => {
-        console.log(currentScope.name)
-        console.log(timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime))
+        if (currentScope.day === false) pay[currentScope.name] = timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime) * currentScope.rate
+        if (currentScope.day == entry.day) pay[currentScope.name] = entry.timeDifference * currentScope.rate
     })
+
     console.log(pay)
     return pay
 }

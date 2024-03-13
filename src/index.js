@@ -5,7 +5,7 @@ import { getPayInfo, sumAllEntries } from './modules/payCalc';
 import { timeInScope } from './modules/timeCalcs';
 
 const workEntries = [
-    new WorkEntry('2024-03-9', '10:30', '20:30'),
+    new WorkEntry('2024-03-10', '10:30', '20:30'),
     new WorkEntry('2024-03-10', '08:00', '18:00'),
 ];
 
@@ -33,8 +33,3 @@ document.querySelector('.getInfo').addEventListener('click', () => {
     const difference = Math.abs(startDate - endDate)/3600000
 })
 
-console.log(workEntries[0].timeDifference)
-console.log(workEntries[0].numericEndTime)
-console.log(workEntries[0].numericStartTime)
-
-getPayInfo(workEntries[0], scopes)
