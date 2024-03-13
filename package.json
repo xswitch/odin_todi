@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode=production",
     "run": "webpack serve --open --mode=development",
-    "publish": "git subtree push --prefix dist origin gh-pages"
+    "publish": "git subtree push --prefix dist origin gh-pages",
+    "watch": "webpack --watch --mode=development"
   },
   "author": "Bjørn Ivar Nevland Mong <bivarmong@gmail.com>",
   "license": "ISC",

@@ -1,4 +1,4 @@
-import { timeInScope, getTimeDifference } from "./timeCalcs";
+import { timeInScope } from "./timeCalcs";
 
 
 // Sums all payment for workEntries within an array against a scope array.
@@ -14,14 +14,8 @@ function sumAllEntries(entryArray, scopeArray) {
 function getPayInfo(entry, scopeArray) {
     let pay = {}
     scopeArray.forEach(currentScope => {
-        // Only choose the ones actually in scope
-        if (currentScope.scope != false && timeInScope(currentScope.scope, entry.fromTime, entry.toTime)) {
-            pay[currentScope.name] = Math.round(getTimeDifference(timeInScope(currentScope.scope, entry.fromTime, entry.toTime)) * currentScope.rate);
-        } else if (currentScope.scope == false && currentScope.day == entry.day) {
-            pay[currentScope.name] = Math.round(getTimeDifference([entry.fromTime, entry.toTime]) * currentScope.rate)
-        } else if (currentScope.scope == false && currentScope.day === false) {
-            pay[currentScope.name] = Math.round(getTimeDifference([entry.fromTime, entry.toTime]) * currentScope.rate)
-        }
+        console.log(currentScope.name)
+        console.log(timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime))
     })
     console.log(pay)
     return pay

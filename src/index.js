@@ -1,11 +1,12 @@
 import WorkEntry from './modules/workEntry';
 import './style.css';
 import createScope from './modules/scopeEntry';
-import { sumAllEntries } from './modules/payCalc';
+import { getPayInfo, sumAllEntries } from './modules/payCalc';
+import { timeInScope } from './modules/timeCalcs';
 
 const workEntries = [
-    new WorkEntry('2024-03-9', 1000, 2200),
-    new WorkEntry('2024-03-10', 800, 1800),
+    new WorkEntry('2024-03-9', '10:30', '20:30'),
+    new WorkEntry('2024-03-10', '08:00', '18:00'),
 ];
 
 const scopes = [
@@ -16,6 +17,24 @@ const scopes = [
     createScope('Søn', 70, false, 0),
 ]
 
-console.log(sumAllEntries(workEntries, scopes))
 
 console.log(workEntries)
+
+
+
+
+document.querySelector('.getInfo').addEventListener('click', () => {
+    const dateInput = document.querySelector('.getDate').value
+    const startTimeInput = document.querySelector('.getStartTime').value
+    const endTimeInput = document.querySelector('.getEndTime').value
+
+    const startDate = new Date(`${dateInput} ${startTimeInput}`)
+    const endDate = new Date(`${dateInput} ${endTimeInput}`)
+    const difference = Math.abs(startDate - endDate)/3600000
+})
+
+console.log(workEntries[0].timeDifference)
+console.log(workEntries[0].numericEndTime)
+console.log(workEntries[0].numericStartTime)
+
+getPayInfo(workEntries[0], scopes)
