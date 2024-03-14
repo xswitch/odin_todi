@@ -1,8 +1,8 @@
 import { getDate, intlFormat, getTime } from "date-fns";
 import { controller } from "../..";
 import El from "../domStuff/createEl";
-import { entriesInWeek } from "../timeCalcs";
-import { getPayInfo } from "../payCalc";
+import { entriesInWeek, timeInScope } from "../timeCalcs";
+import { getPayInfo, sumObject } from "../payCalc";
 
 
 export default function createPage(type, project) {
@@ -59,7 +59,6 @@ function createWeek(entries) {
         classes: 'weekContainer'
     })
     entries.forEach(entry => {
-        console.log(getPayInfo(entry, controller.scopes))
         const entryContainer = new El('div', {
             parent: weekContainer.element,
             classes: 'weekEntry'
@@ -79,6 +78,65 @@ function createWeek(entries) {
             classes: 'weekTotalWorkedText weekPurple',
             text: `${entry.timeDifference} Hours`
         })
+        const hourContainer = new El('div', {
+            parent: entryContainer.element,
+            classes: 'weekHourContainer',
+        })
+
+        const payNameLabel = new El('h3', {
+            parent: hourContainer.element,
+            classes: 'weekPayLabel',
+            text: 'TYPE',
+        })
+        const payHoursLabel = new El('h3', {
+            parent: hourContainer.element,
+            classes: 'weekPayLabel',
+            text: 'HOURS',
+        })
+        const payAmountLabel = new El('h3', {
+            parent: hourContainer.element,
+            classes: 'weekPayLabel',
+            text: 'AMOUNT',
+        })
+        
+        const payInfo = getPayInfo(entry, controller.scopes);
+        console.log(payInfo)
+        for (const key in payInfo) {
+            const hours = payInfo[key].hours;
+            const amount = Math.round(payInfo[key].amount);
+            const paymentName = new El('h3', {
+                parent: hourContainer.element,
+                classes: 'payName',
+                text: `${key}`
+            })
+            const paymentHours = new El('h3', {
+                parent: hourContainer.element,
+                classes: 'payHours',
+                text: hours,
+            })
+            const paymentAmount = new El('h3', {
+                parent: hourContainer.element,
+                classes: 'weekPayAmount',
+                text: amount,
+            })
+        }
+
+        const totalPayContainer = new El('div', {
+            classes: 'weekTotalPayContainer',
+            parent: entryContainer.element
+        })
+        const totalPay = [
+            new El('span', {
+                parent: hourContainer.element,
+                classes: 'payName',
+                text: 'TOTAL',
+            }),
+            new El('span', {
+                parent: hourContainer.element,
+                classes: 'weekPayAmount',
+                text: Math.round(sumObject(payInfo)),
+            })
+        ]
     })
 }
 
@@ -95,7 +153,6 @@ function createLastMonth() {
 }
 
 function createTotal(entries) {
-    console.log(entries)
 }
 
 function createError() {

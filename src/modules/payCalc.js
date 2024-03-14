@@ -16,8 +16,18 @@ function getPayInfo(entry, scopeArray) {
 
     // Gets inside a scope
     scopeArray.forEach(currentScope => {
-        if (currentScope.day === false && timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime)) pay[currentScope.name] = timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime) * currentScope.rate
-        if (currentScope.day == entry.day) pay[currentScope.name] = entry.timeDifference * currentScope.rate
+        if (currentScope.day === false && timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime)) {
+            pay[currentScope.name] = {}
+            pay[currentScope.name].amount = timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime) * currentScope.rate;
+            pay[currentScope.name].hours = timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime)
+        }
+        if (currentScope.day === entry.day) {
+            console.log(currentScope.day)
+            console.log(entry.day)
+            pay[currentScope.name] = {}
+            pay[currentScope.name].hours = entry.timeDifference
+            pay[currentScope.name].amount = entry.timeDifference * currentScope.rate
+        }
     })
 
     return pay
@@ -27,7 +37,7 @@ function getPayInfo(entry, scopeArray) {
 function sumObject(obj) {
     let total = 0;
     Object.keys(obj).forEach(key => {
-        total += obj[key]
+        total += obj[key].amount
     })
 
     return total;
