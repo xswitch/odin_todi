@@ -267,7 +267,7 @@ span.payName {
     grid-template-columns: 1fr;
     place-content: center;
     height: 100%;
-    padding: 5px;
+    padding: 5px 10px;
     align-content: stretch;
 }
 
@@ -275,7 +275,7 @@ span.payName {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 .monthTimeContainer {

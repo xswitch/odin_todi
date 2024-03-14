@@ -14,8 +14,6 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >> Change scopes
 >> Add tax, to check final payment (brutto netto)
 
-> Month Page and last month
->> Populate and grey out dates that has no entries
 
 > Year page
 >> Show all months
@@ -32,3 +30,10 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >Header for week page
 > Create all days in the week as well and only populate those that has an entry
 >> Create an array with all the containers and use date.getDay() to choose which index to use as parent
+
+>MONTH
+>> Change to 35 grid layout
+>>> extend loop to 35
+>>> Return after creating empty cell if loop index is less than startOfMonth().day()
+>> Always place mondays first
+>> Use headers to indicate which day it is
