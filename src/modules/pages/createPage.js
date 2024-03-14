@@ -71,12 +71,7 @@ function createWeek(entries) {
         const workedContainer = new El('div', {
             parent: entryContainer.element,
             classes: 'weekWorkedContainer',
-            text: getStartToEndText(entry),
-        })
-        const totalWorkedText = new El('div', {
-            parent: entryContainer.element,
-            classes: 'weekTotalWorkedText weekPurple',
-            text: `${entry.timeDifference} Hours`
+            text: `${getStartToEndText(entry)} (${entry.timeDifference} Hours)`,
         })
         const hourContainer = new El('div', {
             parent: entryContainer.element,
@@ -119,11 +114,6 @@ function createWeek(entries) {
                 text: amount,
             })
         }
-
-        const totalPayContainer = new El('div', {
-            classes: 'weekTotalPayContainer',
-            parent: entryContainer.element
-        })
         const totalPay = [
             new El('span', {
                 parent: hourContainer.element,
@@ -133,7 +123,7 @@ function createWeek(entries) {
             new El('span', {
                 parent: hourContainer.element,
                 classes: 'weekPayAmount',
-                text: Math.round(sumObject(payInfo)),
+                text: `${Math.round(sumObject(payInfo))}`,
             })
         ]
     })
