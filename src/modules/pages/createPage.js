@@ -100,7 +100,6 @@ function createWeek(entries) {
         })
         
         const payInfo = getPayInfo(entry, controller.scopes);
-        console.log(payInfo)
         for (const key in payInfo) {
             const hours = payInfo[key].hours;
             const amount = Math.round(payInfo[key].amount);

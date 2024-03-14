@@ -22,8 +22,6 @@ function getPayInfo(entry, scopeArray) {
             pay[currentScope.name].hours = timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime)
         }
         if (currentScope.day === entry.day) {
-            console.log(currentScope.day)
-            console.log(entry.day)
             pay[currentScope.name] = {}
             pay[currentScope.name].hours = entry.timeDifference
             pay[currentScope.name].amount = entry.timeDifference * currentScope.rate
