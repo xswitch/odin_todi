@@ -5,108 +5,65 @@ import ThisMonthIcon from "../../img/month.svg"
 import LastMonthIcon from "../../img/lastmonth.svg"
 import ThisYearIcon from "../../img/year.svg"
 import TotalIcon from "../../img/total.svg"
+import { controller } from "../..";
+import createPage from "../pages/createPage";
 
 
 
-function setUpCategory(category) {
+function setUpCategory(category, project) {
     const navContainer = document.querySelector('.sideBar>main');
     const categoryLabel = new El('div',{
         classes: 'navLabel',
         parent: navContainer,
         text: category.toUpperCase(),
     })
-    const categorySingleString = category.replace(' ', '')
 
-    const categoryButtons = {
-        thisWeek: {
-            button: new El('button', {
-                classes: `navButton projectButton`,
-                parent: navContainer,
-            }),
-        },
-        thisMonth: {
-            button: new El('button', {
-                classes: `navButton projectButton`,
-                parent: navContainer,
-            }),
-        },
-        lastMonth: {
-            button: new El('button', {
-                classes: `navButton projectButton`,
-                parent: navContainer,
-            }),
-        },
-        thisYear: {
-            button: new El('button', {
-                classes: `navButton projectButton`,
-                parent: navContainer,
-            }),
-        },
-        total: {
-            button: new El('button', {
-                classes: `navButton projectButton`,
-                parent: navContainer,
-            }),
-        },
+    const buttons = {
+        week: createNavButton('THIS WEEK', ThisWeekIcon),
+        month: createNavButton('THIS MONTH', ThisMonthIcon),
+        lastMonth: createNavButton('LAST MONTH', LastMonthIcon),
+        year: createNavButton('THIS YEAR', ThisYearIcon),
+        total: createNavButton('TOTAL', TotalIcon),
     }
+    setUpNavButtons(buttons, project);
 
-    // THIS WEEK
-    categoryButtons.thisWeek.image = new El('img', {
-        classes: 'navImg',
-        parent: categoryButtons.thisWeek.button.element,
-        properties: {src: ThisWeekIcon},
-    })
-    categoryButtons.thisWeek.label = new El('span', {
-        text: 'THIS WEEK',
-        parent: categoryButtons.thisWeek.button.element,
-    })
+    // Event Listeners
 
-    // THIS MONTH
-    categoryButtons.thisMonth.image = new El('img', {
-        classes: 'navImg',
-        parent: categoryButtons.thisMonth.button.element,
-        properties: {src: ThisMonthIcon},
-    })
-    categoryButtons.thisMonth.label = new El('span', {
-        text: 'THIS MONTH',
-        parent: categoryButtons.thisMonth.button.element,
-    })
-
-    // LAST MONTH
-    categoryButtons.lastMonth.image = new El('img', {
-        classes: 'navImg',
-        parent: categoryButtons.lastMonth.button.element,
-        properties: {src: LastMonthIcon},
-    })
-    categoryButtons.lastMonth.label = new El('span', {
-        text: 'LAST MONTH',
-        parent: categoryButtons.lastMonth.button.element,
-    })
-
-    // YEAR
-    categoryButtons.thisYear.image = new El('img', {
-        classes: 'navImg',
-        parent: categoryButtons.thisYear.button.element,
-        properties: {src: ThisYearIcon},
-    })
-    categoryButtons.thisYear.label = new El('span', {
-        text: 'THIS YEAR',
-        parent: categoryButtons.thisYear.button.element,
-    })
-
-    // TOTAL
-    categoryButtons.total.image = new El('img', {
-        classes: 'navImg',
-        parent: categoryButtons.total.button.element,
-        properties: {src: TotalIcon},
-    })
-    categoryButtons.total.label = new El('span', {
-        text: 'TOTAL',
-        parent: categoryButtons.total.button.element,
-    })
-
-    return [categoryLabel, categoryButtons]
+    return [categoryLabel, buttons]
 }
+
+function createNavButton(text, img) {
+    const navContainer = document.querySelector('.sideBar>main')
+    const button = new El('button', {
+            classes: `navButton projectButton`,
+            parent: navContainer,
+    })
+    const image = new El('img', {
+        classes: 'navImg',
+        parent: button.element,
+        properties: {src: img},
+    })
+    const label = new El('span', {
+        text: text,
+        parent: button.element,
+    })
+    return button
+}
+
+function setUpNavButtons(buttons, project) {
+    for (const buttonName in buttons) {
+        const buttonElement = buttons[buttonName].element;
+        buttonElement.addEventListener('click', () => {
+            // Returns if already on page
+            if (controller.getCurrentPage()[0] == buttonName && controller.getCurrentPage()[1] == project) return;
+            // Changes page and calls createPage with the right parameters
+            controller.setCurrentPage([buttonName, project]);
+            resetPage()
+            createPage(buttonName, project);
+        })
+    }
+}
+
 
 function setUpButtonsClassToggle() {
     const allButtons = document.querySelectorAll('.navButton');
@@ -138,15 +95,18 @@ function resetPage() {
 
 function createStoredCategories(categoriesArray) {
     categoriesArray.forEach(category => {
-        setUpCategory(category)
+        setUpCategory(category[0], category[1])
     })
 }
 
 (function() {
     const homeButton = document.querySelector('.homeButton');
     homeButton.addEventListener('click', () => {
+        const curPage = controller.getCurrentPage()
+        if (curPage[0] == 'home' && curPage[1] == 'default') return;
         resetPage()
-        createHome();
+        createHome
+        controller.setCurrentPage(['home', 'default'])
     })
 })()
 

@@ -1,3 +1,4 @@
+import { addDays, endOfWeek, startOfWeek } from "date-fns"
 // Takes a converted array with start and end time (17.50-19.00) f.eks
 function timeInScope(timeScopeArray, workedFrom, workedTo) {
     let startingTime;
@@ -11,4 +12,12 @@ function timeInScope(timeScopeArray, workedFrom, workedTo) {
     return (endTime-startingTime)/100;
 }
 
-export {timeInScope};
+function entriesInWeek(entries) {
+    const start = addDays(startOfWeek(new Date), 1);
+    const end = addDays(endOfWeek(new Date), 1);
+    return entries.filter((entry) => {
+        if (entry.date > start && entry.date < end) return true;
+    })
+}
+
+export {timeInScope, entriesInWeek};

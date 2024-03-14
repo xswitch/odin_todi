@@ -1,3 +1,3 @@
-export default function createCategory(name, standard = false) {
-    return name.toLowerCase();
+export default function createCategory(name, project) {
+    return [name.toLowerCase(), project];
 }
