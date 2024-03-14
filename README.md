@@ -5,6 +5,8 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 
 \\ FOR TOMORROW
 
+> Find icons that fit the theme
+
 > a new function for each type of page that gets called from the createPage function
 
 > Finish home page
@@ -37,3 +39,5 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >>> Return after creating empty cell if loop index is less than startOfMonth().day()
 >> Always place mondays first
 >> Use headers to indicate which day it is
+>> A circle around Today
+>> Month and year in header

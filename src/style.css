@@ -168,7 +168,7 @@ body {
 
 .weekEntry {
     background-color: var(--color-surface-200);
-    border-radius: 25px;
+    border-radius: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -200,9 +200,9 @@ body {
     justify-items: center;
     font-size: 1rem;
     gap: 10px;
-    padding: 15px 10px;
+    padding: 15px 5px;
     background-color: rgba(30, 30, 30, 0.8);
-    border-radius: 15px;
+    border-radius: 10px;
     height: 100%;
 }
 
@@ -227,14 +227,18 @@ span.weekPayAmount {
     color: var(--color-primary-600);
     grid-column-start: 3;
     font-weight: bold;
-    font-size: var(--week-entry-text-size);
+    font-size: 1rem;
 }
 
 span.payName {
     color: white;
     font-weight: bold;
     grid-column-start: 1;
-    font-size: var(--week-entry-text-size);
+    font-size: 1rem;
+}
+
+.totalPayContainer {
+    padding: 15px;
 }
 
 /* MONTH */
