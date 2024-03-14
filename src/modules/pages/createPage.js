@@ -1,7 +1,7 @@
 import { getDate, intlFormat, getTime } from "date-fns";
 import { controller } from "../..";
 import El from "../domStuff/createEl";
-import { entriesInWeek, timeInScope } from "../timeCalcs";
+import { entriesInMonth, entriesInWeek, entriesLastMonth, entriesThisYear, timeInScope } from "../timeCalcs";
 import { getPayInfo, sumObject } from "../payCalc";
 
 
@@ -15,13 +15,13 @@ export default function createPage(type, project) {
             createWeek(entriesInWeek(projectEntries))
             break;
         case 'month':
-            createMonth()
+            createMonth(entriesInMonth(projectEntries));
             break;
         case 'lastMonth':
-            createLastMonth()
+            createLastMonth(entriesLastMonth(projectEntries));
             break;
         case 'year':
-            createYear()
+            createYear(entriesThisYear(projectEntries))
             break;
         case 'total':
             createTotal(projectEntries)
@@ -129,17 +129,18 @@ function createWeek(entries) {
     })
 }
 
-function createMonth() {
-
+function createMonth(entries) {
+    console.log(entries)
 }
 
-function createYear() {
-
+function createLastMonth(entries) {
+    console.log(entries)
 }
 
-function createLastMonth() {
-
+function createYear(entries) {
+    console.log(entries)
 }
+
 
 function createTotal(entries) {
 }

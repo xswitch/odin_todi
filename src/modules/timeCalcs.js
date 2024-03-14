@@ -1,4 +1,4 @@
-import { addDays, endOfWeek, startOfWeek } from "date-fns"
+import { addDays, endOfMonth, endOfWeek, endOfYear, startOfMonth, startOfWeek, startOfYear } from "date-fns"
 // Takes a converted array with start and end time (17.50-19.00) f.eks
 function timeInScope(timeScopeArray, workedFrom, workedTo) {
     let startingTime;
@@ -20,4 +20,35 @@ function entriesInWeek(entries) {
     })
 }
 
-export {timeInScope, entriesInWeek};
+function entriesInMonth(entries) {
+    const start = startOfMonth(new Date)
+    const end = endOfMonth(new Date)
+
+    
+    return filterTimePeriod(entries, start, end)
+}
+
+function entriesLastMonth(entries) {
+    let start = new Date()
+    let end = new Date();
+
+    start = startOfMonth(start.setMonth(start.getMonth() - 1))
+    end = endOfMonth(end.setMonth(end.getMonth() - 1))
+
+    return filterTimePeriod(entries, start, end)
+}
+
+function entriesThisYear(entries) {
+    let start = startOfYear(new Date());
+    let end = endOfYear(new Date());
+
+    return filterTimePeriod(entries, start, end)
+}
+
+function filterTimePeriod(entries, start, end) {
+    return entries.filter((entry) => {
+        if (entry.date > start && entry.date < end) return entry
+    })
+}
+
+export {timeInScope, entriesInWeek, entriesInMonth, entriesLastMonth, entriesThisYear};
