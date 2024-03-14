@@ -143,6 +143,18 @@
 /* END */
 
 
-.test1 {
-    color: white;
+/* WEEK */
+
+.weekContainer {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 25px;
+}
+
+.weekEntry {
+    background-color: orange;
+    border: 1px solid white;
 }

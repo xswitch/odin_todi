@@ -10,7 +10,7 @@ export default function createPage(type, project) {
 
     switch (type) {
         case 'week':
-            createWeek()
+            createWeek(entriesInWeek(projectEntries))
             break;
         case 'month':
             createMonth()
@@ -31,8 +31,17 @@ export default function createPage(type, project) {
 
 }
 
-function createWeek() {
-
+function createWeek(entries) {
+    const weekContainer = new El('div', {
+        parent: '.pageContent',
+        classes: 'weekContainer'
+    })
+    entries.forEach(entry => {
+        const entryContainer = new El('div', {
+            parent: weekContainer.element,
+            classes: 'weekEntry'
+        })
+    })
 }
 
 function createMonth() {

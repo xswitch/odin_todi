@@ -16,6 +16,9 @@ const controller = (function () {
         new WorkEntry('2024-03-12', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-03-13', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-03-14', '08:00', '18:00', 'blåsenborg'),
+        new WorkEntry('2024-03-15', '08:00', '18:00', 'blåsenborg'),
+        new WorkEntry('2024-03-16', '08:00', '18:00', 'blåsenborg'),
+        new WorkEntry('2024-03-17', '08:00', '18:00', 'blåsenborg'),
     ];
     
     const categories = [
