@@ -1,4 +1,4 @@
-import { getDate, intlFormat, getTime } from "date-fns";
+import { getDate, intlFormat, getTime, getDaysInMonth, startOfMonth, addDays } from "date-fns";
 import { controller } from "../..";
 import El from "../domStuff/createEl";
 import { entriesInMonth, entriesInWeek, entriesLastMonth, entriesThisYear, timeInScope } from "../timeCalcs";
@@ -18,7 +18,7 @@ export default function createPage(type, project) {
             createMonth(entriesInMonth(projectEntries));
             break;
         case 'lastMonth':
-            createLastMonth(entriesLastMonth(projectEntries));
+            createMonth(entriesLastMonth(projectEntries));
             break;
         case 'year':
             createYear(entriesThisYear(projectEntries))
@@ -41,10 +41,9 @@ function getWeekdayAndDate(date) {
       })
 }
 
-function getDayAndMonth(date) {
+function getWeekDay(date) {
     return intlFormat(date, {
-        month: 'long',
-        day: 'numeric',
+        weekday: 'short',
       })
 }
 
@@ -58,11 +57,17 @@ function createWeek(entries) {
         parent: '.pageContent',
         classes: 'weekContainer'
     })
-    entries.forEach(entry => {
-        const entryContainer = new El('div', {
+    const daysArray = []
+    for (let i = 0; i <= 6; i++) {
+        daysArray.push(new El('div', {
             parent: weekContainer.element,
             classes: 'weekEntry'
-        })
+        }))
+    }
+
+    entries.forEach((entry, index) => {
+        const day = (entry.date.getDay() == 0) ? 7 : entry.date.getDay();
+        const entryContainer = daysArray[day-1];
         const entryTitle = new El('h2', {
             parent: entryContainer.element,
             classes: 'weekTitle weekWhite',
@@ -114,28 +119,78 @@ function createWeek(entries) {
                 text: amount,
             })
         }
+        const totalPayContainer = new El('div', {
+            classes: 'totalPayContainer',
+            parent: entryContainer.element,
+        })
         const totalPay = [
             new El('span', {
-                parent: hourContainer.element,
+                parent: totalPayContainer.element,
                 classes: 'payName',
-                text: 'TOTAL',
+                text: 'TOTAL: ',
             }),
             new El('span', {
-                parent: hourContainer.element,
+                parent: totalPayContainer.element,
                 classes: 'weekPayAmount',
-                text: `${Math.round(sumObject(payInfo))}`,
+                text: `${Math.round(sumObject(payInfo))} NOK`,
             })
         ]
     })
 }
 
 function createMonth(entries) {
-    console.log(entries)
+    const daysInMonth = getDaysInMonth(new Date())
+    const monthContainer = new El('div', {classes: 'monthContainer', parent: '.pageContent'});
+    const dateContainers = []
+    let start = startOfMonth(entries[0].date)
+    console.log(start)
+
+    for (let i = 0; i < daysInMonth; i++) {
+        dateContainers.push(new El('div', {
+            classes: 'monthEntry',
+            parent: monthContainer.element
+        }))
+        const entryContainer = new El('div', {
+            classes: 'entryContainer',
+            parent: dateContainers[i].element
+        })
+        const dateContainer = new El('div', {
+            classes: 'monthDateContainer empty',
+            parent: entryContainer.element,
+        })
+        const dateText = new El('h3', {
+            parent: dateContainer.element,
+            text: getWeekDay(start)
+        })
+        const dateNumber = new El('h3', {
+            parent: dateContainer.element,
+            text: (start.getDate())
+        })
+        start = addDays(start, 1);
+    }
+
+    entries.forEach(entry => {
+        const dateIndex = entry.date.getDate()-1
+        const timeContainer = new El('div', {
+            classes: 'monthTimeContainer',
+            parent: dateContainers[dateIndex].element.firstChild
+        })
+        const startToEndText = new El('h3', {
+            parent: timeContainer.element,
+            text: `${getStartToEndText(entry)}`
+        })
+        const totalHoursText = new El('h3', {
+            parent: timeContainer.element,
+            text: `(${entry.timeDifference} Hours)`
+        })
+        const totalPayText = new El('h3', {
+            parent: dateContainers[dateIndex].element.firstChild,
+            text: `${Math.round(sumObject(getPayInfo(entry, controller.scopes)))} NOK`
+        })
+        dateContainers[dateIndex].element.lastChild.firstChild.classList.remove('empty')
+    })
 }
 
-function createLastMonth(entries) {
-    console.log(entries)
-}
 
 function createYear(entries) {
     console.log(entries)

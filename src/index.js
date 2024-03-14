@@ -12,7 +12,7 @@ const controller = (function () {
         new WorkEntry('2024-02-08', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-02-09', '08:00', '18:00', 'blåsenborg'),
         new WorkEntry('2024-02-10', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-02-11', '08:00', '13:30', 'bryne'),
+        new WorkEntry('2024-03-11', '08:00', '13:30', 'bryne'),
         new WorkEntry('2024-03-12', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-03-13', '08:00', '18:00', 'blåsenborg'),
         new WorkEntry('2024-03-14', '08:00', '18:00', 'bryne'),

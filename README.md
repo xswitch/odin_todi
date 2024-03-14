@@ -15,10 +15,7 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >> Add tax, to check final payment (brutto netto)
 
 > Month Page and last month
->> Always populate the whole month
->> Fill in dates that has entries
->>> Show date and day on all
->>> Show hours worked and total money made for each entry
+>> Populate and grey out dates that has no entries
 
 > Year page
 >> Show all months
@@ -31,3 +28,7 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >>> Month with most hours
 >>> Total money and hours
 >>> Total money taxed
+
+>Header for week page
+> Create all days in the week as well and only populate those that has an entry
+>> Create an array with all the containers and use date.getDay() to choose which index to use as parent
