@@ -1,3 +1,4 @@
+import { getDate, intlFormat } from "date-fns";
 import { controller } from "../..";
 import El from "../domStuff/createEl";
 import { entriesInWeek } from "../timeCalcs";
@@ -22,13 +23,21 @@ export default function createPage(type, project) {
             createYear()
             break;
         case 'total':
-            createTotal()
+            createTotal(projectEntries)
             break;
         default:
             createError()
             break;
     }
 
+}
+
+function getDateInfo(date) {
+    return intlFormat(date, {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+      })
 }
 
 function createWeek(entries) {
@@ -40,6 +49,11 @@ function createWeek(entries) {
         const entryContainer = new El('div', {
             parent: weekContainer.element,
             classes: 'weekEntry'
+        })
+        const entryTitle = new El('h2', {
+            parent: entryContainer.element,
+            classes: 'weekTitle',
+            text: getDateInfo(entry.date),
         })
     })
 }
@@ -56,8 +70,8 @@ function createLastMonth() {
 
 }
 
-function createTotal() {
-
+function createTotal(entries) {
+    console.log(entries)
 }
 
 function createError() {

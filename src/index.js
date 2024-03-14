@@ -1,7 +1,7 @@
 import WorkEntry from './modules/workEntry';
 import createScope from './modules/scopeEntry';
 import './style.css';
-import { createStoredCategories, setUpButtonsClassToggle, setUpCategory } from './modules/domStuff/navigation';
+import { createStoredCategories, setUpButtonsClassToggle } from './modules/domStuff/navigation';
 import createCategory from './modules/categoryEntry';
 
 const controller = (function () {
@@ -14,8 +14,8 @@ const controller = (function () {
         new WorkEntry('2024-03-10', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-03-11', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-03-12', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-03-13', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-03-14', '08:00', '18:00', 'blåsenborg'),
+        new WorkEntry('2024-03-13', '08:00', '18:00', 'blåsenborg'),
+        new WorkEntry('2024-03-14', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-03-15', '08:00', '18:00', 'blåsenborg'),
         new WorkEntry('2024-03-16', '08:00', '18:00', 'blåsenborg'),
         new WorkEntry('2024-03-17', '08:00', '18:00', 'blåsenborg'),

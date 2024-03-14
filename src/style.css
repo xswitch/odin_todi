@@ -155,6 +155,10 @@
 }
 
 .weekEntry {
-    background-color: orange;
-    border: 1px solid white;
+    background-color: var(--color-surface-200);
+    border-radius: 25px;
+}
+
+.weekTitle {
+    color: white;
 }
