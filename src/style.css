@@ -157,8 +157,22 @@
 .weekEntry {
     background-color: var(--color-surface-200);
     border-radius: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
 }
 
 .weekTitle {
     color: white;
+}
+
+.weekPurple {
+    color: var(--color-primary-600);
+}
+
+.weekWorkedContainer {
+    color: var(--color-surface-600);
 }

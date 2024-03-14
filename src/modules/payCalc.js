@@ -16,11 +16,10 @@ function getPayInfo(entry, scopeArray) {
 
     // Gets inside a scope
     scopeArray.forEach(currentScope => {
-        if (currentScope.day === false) pay[currentScope.name] = timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime) * currentScope.rate
+        if (currentScope.day === false && timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime)) pay[currentScope.name] = timeInScope(currentScope.scope, entry.numericStartTime, entry.numericEndTime) * currentScope.rate
         if (currentScope.day == entry.day) pay[currentScope.name] = entry.timeDifference * currentScope.rate
     })
 
-    console.log(pay)
     return pay
 }
 
