@@ -1,7 +1,7 @@
-import { getDate, intlFormat, getTime, getDaysInMonth, startOfMonth, addDays } from "date-fns";
+import { intlFormat, getDaysInMonth, startOfMonth, addDays } from "date-fns";
 import { controller } from "../..";
 import El from "../domStuff/createEl";
-import { entriesInMonth, entriesInWeek, entriesLastMonth, entriesThisYear, timeInScope } from "../timeCalcs";
+import { entriesInMonth, entriesInWeek, entriesLastMonth, entriesThisYear } from "../timeCalcs";
 import { getPayInfo, sumObject } from "../payCalc";
 
 

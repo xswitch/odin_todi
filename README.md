@@ -12,7 +12,7 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 > Finish home page
 >> Create new projects
 >> Create new entries
->> Overview from the month
+>> Overview from the month - total hours with benefits, kinda like the cards in week
 >> Change scopes
 >> Add tax, to check final payment (brutto netto)
 
