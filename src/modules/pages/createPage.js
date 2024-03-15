@@ -139,7 +139,7 @@ function createWeek(entries) {
 }
 
 function createMonth(entries) {
-    const daysInMonth = getDaysInMonth(new Date())
+    const daysInMonth = getDaysInMonth(entries[0].date)
     const monthContainer = new El('div', {classes: 'monthContainer', parent: '.pageContent'});
     const dateContainers = []
     let start = startOfMonth(entries[0].date)
