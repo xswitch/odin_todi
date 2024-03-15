@@ -73,6 +73,7 @@ function createWeek(entries) {
             classes: 'weekTitle weekWhite',
             text: getWeekdayAndDate(entry.date),
         })
+        if ((new Date).getDate() == entry.date.getDate()) entryTitle.addClass = 'currentDayWeek'
         const workedContainer = new El('div', {
             parent: entryContainer.element,
             classes: 'weekWorkedContainer',
@@ -153,7 +154,7 @@ function createWeek(entries) {
         text3: new El('h1', {
             classes: 'headerText white',
             parent: headerContainer,
-            text: 'Hours ➔'
+            text: 'Hours &'
         }),
         text4: new El('h1', {
             classes: 'headerText purple',

@@ -24,7 +24,7 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >>> Total money and hours
 >>> Total money taxed
 
->Header for week page
+>Header for month and year pages
 
 >MONTH
 >> Change to 35 grid layout

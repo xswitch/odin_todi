@@ -3,6 +3,7 @@ import createScope from './modules/scopeEntry';
 import './style.css';
 import { createStoredCategories, setUpButtonsClassToggle } from './modules/domStuff/navigation';
 import createCategory from './modules/categoryEntry';
+import createHome from './modules/pages/home';
 
 const controller = (function () {
     let currentPage = ['home', 'default'];
@@ -12,13 +13,14 @@ const controller = (function () {
         new WorkEntry('2024-02-08', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-02-09', '08:00', '18:00', 'blåsenborg'),
         new WorkEntry('2024-02-10', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-03-11', '08:00', '13:30', 'bryne'),
-        new WorkEntry('2024-03-12', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-03-13', '08:00', '18:00', 'blåsenborg'),
-        new WorkEntry('2024-03-14', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-03-15', '08:00', '18:00', 'blåsenborg'),
-        new WorkEntry('2024-03-16', '08:00', '20:30', 'blåsenborg'),
-        new WorkEntry('2024-03-06', '10:30', '22:30', 'blåsenborg'),
+        new WorkEntry('2024-03-11', '11:30', '23:30', 'bryne'),
+        new WorkEntry('2024-03-12', '11:30', '23:30', 'bryne'),
+        new WorkEntry('2024-03-13', '11:30', '23:30', 'blåsenborg'),
+        new WorkEntry('2024-03-14', '11:30', '23:30', 'bryne'),
+        new WorkEntry('2024-03-15', '11:30', '23:30', 'blåsenborg'),
+        new WorkEntry('2024-03-16', '11:30', '23:30', 'blåsenborg'),
+        new WorkEntry('2024-03-17', '11:30', '23:30', 'blåsenborg'),
+        new WorkEntry('2024-03-06', '11:30', '23:30', 'blåsenborg'),
         new WorkEntry('2024-03-01', '08:00', '18:00', 'blåsenborg'),
     ];
     
@@ -53,5 +55,5 @@ const controller = (function () {
 })()
 createStoredCategories(controller.categories)
 setUpButtonsClassToggle()
-
+createHome()
 export {controller}

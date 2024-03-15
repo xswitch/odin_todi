@@ -104,9 +104,9 @@ function createStoredCategories(categoriesArray) {
     homeButton.addEventListener('click', () => {
         const curPage = controller.getCurrentPage()
         if (curPage[0] == 'home' && curPage[1] == 'default') return;
-        resetPage()
-        createHome
         controller.setCurrentPage(['home', 'default'])
+        resetPage()
+        createHome()
     })
 })()
 

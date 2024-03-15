@@ -140,7 +140,7 @@ body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 75px 1fr;
 }
 
 .pageContent {
@@ -150,7 +150,8 @@ body {
 }
 
 .pageHeader {
-    border-bottom: 1px solid var(--color-surface-400);
+    align-self: center;
+    margin-top: 15px;
 }
 /* END */
 
@@ -200,6 +201,7 @@ body {
 
 .weekTitle {
     color: white;
+    padding: 5px;
 }
 
 .weekPurple {
@@ -379,4 +381,34 @@ h3.monthCardMoney {
     background-color: var(--color-primary-600);
     color: black;
     border-radius: 50%;
+}
+
+.currentDayWeek {
+    background-color: var(--color-primary-600);
+    color: black;
+    border-radius: 10px;
+}
+
+/* HOME */
+
+.homeContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 100%;
+    gap: 15px;
+    padding: 15px;
+}
+
+.homeHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+.homeContainer>div {
+    background-color: var(--color-surface-200);
+    border-radius: 25px;
 }
