@@ -51,4 +51,8 @@ function filterTimePeriod(entries, start, end) {
     })
 }
 
-export {timeInScope, entriesInWeek, entriesInMonth, entriesLastMonth, entriesThisYear};
+function sumHoursInArray(entryArray) {
+    return entryArray.reduce((prev, cur) => prev + cur.timeDifference, 0)
+}
+
+export {timeInScope, entriesInWeek, entriesInMonth, entriesLastMonth, entriesThisYear, sumHoursInArray};

@@ -1,8 +1,8 @@
-import { intlFormat, getDaysInMonth, startOfMonth, addDays } from "date-fns";
+import { intlFormat, getDaysInMonth, startOfMonth, addDays, startOfYear, addMonths } from "date-fns";
 import { controller } from "../..";
 import El from "../domStuff/createEl";
-import { entriesInMonth, entriesInWeek, entriesLastMonth, entriesThisYear } from "../timeCalcs";
-import { getPayInfo, sumObject } from "../payCalc";
+import { entriesInMonth, entriesInWeek, entriesLastMonth, entriesThisYear, sumHoursInArray } from "../timeCalcs";
+import { getPayInfo, sumAllEntries, sumObject } from "../payCalc";
 
 
 export default function createPage(type, project) {
@@ -166,6 +166,8 @@ function createMonth(entries) {
             parent: dateContainer.element,
             text: (start.getDate())
         })
+        // Gives today another class for visualization
+        if ((new Date).getDate() == start.getDate() && (new Date).getMonth() == start.getMonth()) dateNumber.addClass = 'currentDay';
         start = addDays(start, 1);
     }
 
@@ -193,7 +195,42 @@ function createMonth(entries) {
 
 
 function createYear(entries) {
-    console.log(entries)
+    let monthsContainerArray = []
+    const yearContainer = new El('div', {classes: 'yearContainer', parent: '.pageContent'})
+    const entriesSplitIntoMonths = []
+    let yearStart = startOfYear(new Date)
+    for (let i = 0; i <= 11; i++) {
+        // Splits entries into the months they belong in
+        entriesSplitIntoMonths.push(entries.filter(entry => {
+            if (entry.date.getMonth() == i) return entry
+        }))
+        monthsContainerArray.push(new El('div', {
+            classes: 'yearEntryContainer',
+            parent: yearContainer.element
+        }))
+        const monthCard = new El('h3', {classes: 'monthCard', parent: monthsContainerArray[i].element})
+        const monthInfo = new El('h3', {classes: 'yearMonthInfo empty', parent: monthCard.element, text: intlFormat(yearStart, {month: 'long'})})
+
+        // If entries on that month, populate
+        if (entriesSplitIntoMonths[i].length > 0) {
+            const moneyMade = sumAllEntries(entriesSplitIntoMonths[i], controller.scopes)
+            const hoursWorked = sumHoursInArray(entriesSplitIntoMonths[i])
+            monthInfo.classes = 'yearMonthInfo'
+
+            const hoursText = new El('h3', {
+                classes: 'monthCardHours',
+                parent: monthCard.element,
+                text: `${hoursWorked} Hrs`,
+            })
+            const moneyText = new El('h3', {
+                classes: 'monthCardMoney',
+                parent: monthCard.element,
+                text: `${Math.round(moneyMade)} NOK`
+            })
+        }
+        if ((new Date).getMonth() == i) monthInfo.addClass = 'currentMonth'
+        yearStart = addMonths(yearStart, 1);
+    }
 }
 
 

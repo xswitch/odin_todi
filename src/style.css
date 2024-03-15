@@ -290,9 +290,73 @@ span.payName {
 }
 
 .entryContainer>h3 {
-    color: var(--color-primary-600)
+    color: var(--color-primary-600);
+}
+
+.monthDateContainer>h3 {
+    padding: 5px;
 }
 
 .monthDateContainer.empty>h3 {
     color: var(--color-surface-300);
+}
+
+/* YEAR */
+
+.yearContainer {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    padding: 5px;
+}
+
+.yearEntryContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color: var(--color-surface-200);
+    padding: 10px;
+}
+
+.monthCard {
+    display: grid;
+    place-items: center;
+}
+
+.yearMonthInfo,
+.monthCardHours,
+.monthCardMoney {
+    color: white;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;
+}
+
+.yearMonthInfo.empty {
+    color: var(--color-surface-300);
+}
+
+h3.monthCardHours {
+    color: var(--color-surface-600)
+}
+
+h3.monthCardMoney {
+    color: var(--color-primary-600)
+}
+
+
+/* CURRENT TIME */
+.currentMonth {
+    background-color: var(--color-primary-600);
+    color: black;
+    border-radius: 15px;
+}
+
+.currentDay {
+    background-color: var(--color-primary-600);
+    color: black;
+    border-radius: 50%;
 }
