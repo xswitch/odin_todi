@@ -157,11 +157,31 @@ body {
 
 /* WEEK */
 
+.weekHeader {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+.headerText {
+    font-size: 3rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.white {
+    color: white;
+}
+
+.purple {
+    color: var(--color-primary-600);
+}
+
 .weekContainer {
     display: grid;
     height: 100%;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
     gap: 15px;
     padding: 15px;
 }

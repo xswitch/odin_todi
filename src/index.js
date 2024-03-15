@@ -18,7 +18,7 @@ const controller = (function () {
         new WorkEntry('2024-03-14', '08:00', '18:00', 'bryne'),
         new WorkEntry('2024-03-15', '08:00', '18:00', 'blåsenborg'),
         new WorkEntry('2024-03-16', '08:00', '20:30', 'blåsenborg'),
-        new WorkEntry('2024-03-06', '10:30', '20:30', 'blåsenborg'),
+        new WorkEntry('2024-03-06', '10:30', '22:30', 'blåsenborg'),
         new WorkEntry('2024-03-01', '08:00', '18:00', 'blåsenborg'),
     ];
     

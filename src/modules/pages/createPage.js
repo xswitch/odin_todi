@@ -136,6 +136,36 @@ function createWeek(entries) {
             })
         ]
     })
+
+    const headerContainer = document.querySelector('.pageHeader');
+    headerContainer.classList.add('weekHeader')
+    const header = {
+        text1 : new El('h1', {
+            classes: 'headerText white',
+            parent: headerContainer,
+            text: 'This Week: '
+        }),
+        text2: new El('h1', {
+            classes: 'headerText purple',
+            parent: headerContainer,
+            text: sumHoursInArray(entries)
+        }),
+        text3: new El('h1', {
+            classes: 'headerText white',
+            parent: headerContainer,
+            text: 'Hours ➔'
+        }),
+        text4: new El('h1', {
+            classes: 'headerText purple',
+            parent: headerContainer,
+            text: Math.round(sumAllEntries(entries, controller.scopes)),
+        }),
+        text5: new El('h1', {
+            classes: 'headerText white',
+            parent: headerContainer,
+            text: 'NOK',
+        }),
+    }
 }
 
 function createMonth(entries) {

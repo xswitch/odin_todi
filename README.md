@@ -34,3 +34,13 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >> Use headers to indicate which day it is
 >> A circle around Today
 >> Month and year in header
+
+> NAV
+>> A small circle that shows amount of entries in each button
+
+> FUNCTIONALITY
+>> Remove projects - also removes all entries in that project
+>> Remove entries
+>> Edit entries
+>> Create projects
+>> Add scopes
