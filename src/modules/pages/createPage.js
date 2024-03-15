@@ -3,6 +3,8 @@ import { controller } from "../..";
 import El from "../domStuff/createEl";
 import { entriesInMonth, entriesInWeek, entriesLastMonth, entriesThisYear, sumHoursInArray } from "../timeCalcs";
 import { getPayInfo, sumAllEntries, sumObject } from "../payCalc";
+import MoneyIcon from "../../img/money.svg";
+import TimeIcon from "../../img/time.svg";
 
 
 export default function createPage(type, project) {
@@ -140,33 +142,40 @@ function createWeek(entries) {
 
     const headerContainer = document.querySelector('.pageHeader');
     headerContainer.classList.add('weekHeader')
-    const header = {
-        text1 : new El('h1', {
+        const text1 = new El('h1', {
             classes: 'headerText white',
             parent: headerContainer,
             text: 'This Week: '
-        }),
-        text2: new El('h1', {
-            classes: 'headerText purple',
+        })
+        const weekHoursContainer = new El('div', {
+            classes: 'weekHeaderHours',
             parent: headerContainer,
+        })
+        const text2 = new El('h1', {
+            classes: 'headerText',
+            parent: weekHoursContainer.element,
             text: sumHoursInArray(entries)
-        }),
-        text3: new El('h1', {
-            classes: 'headerText white',
+        })
+        const text3 = new El('img', {
+            classes: 'headerIcon',
+            parent: weekHoursContainer.element,
+            properties: {src: TimeIcon},
+        })
+        const weekMoneyContainer = new El('div', {
+            classes: 'weekHeaderHours',
             parent: headerContainer,
-            text: 'Hours &'
-        }),
-        text4: new El('h1', {
-            classes: 'headerText purple',
-            parent: headerContainer,
+        })
+        const text4 = new El('h1', {
+            classes: 'headerText',
+            parent: weekMoneyContainer.element,
             text: Math.round(sumAllEntries(entries, controller.scopes)),
-        }),
-        text5: new El('h1', {
-            classes: 'headerText white',
-            parent: headerContainer,
-            text: 'NOK',
-        }),
-    }
+        })
+        const text5 = new El('img', {
+            classes: 'headerIcon',
+            parent: weekMoneyContainer.element,
+            properties: {src: MoneyIcon},
+        })
+    
 }
 
 function createMonth(entries) {

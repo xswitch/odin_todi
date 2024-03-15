@@ -140,7 +140,7 @@ body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: 75px 1fr;
+    grid-template-rows: max-content 1fr;
 }
 
 .pageContent {
@@ -151,7 +151,8 @@ body {
 
 .pageHeader {
     align-self: center;
-    margin-top: 15px;
+    background-color: var(--color-surface-200);
+    border-bottom: 1px solid var(--color-surface-400);
 }
 /* END */
 
@@ -168,6 +169,22 @@ body {
 .headerText {
     font-size: 3rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.weekHeaderHours {
+    background-color: var(--color-primary-600);
+    color: black;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.headerIcon {
+    height: 100%;
+    width: 100%;
 }
 
 .white {
