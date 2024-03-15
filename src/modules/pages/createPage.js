@@ -143,7 +143,6 @@ function createMonth(entries) {
     const monthContainer = new El('div', {classes: 'monthContainer', parent: '.pageContent'});
     const dateContainers = []
     let start = startOfMonth(entries[0].date)
-    console.log(start)
 
     for (let i = 0; i < daysInMonth; i++) {
         dateContainers.push(new El('div', {

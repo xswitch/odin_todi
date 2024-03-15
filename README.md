@@ -16,11 +16,6 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >> Change scopes
 >> Add tax, to check final payment (brutto netto)
 
-
-> Year page
->> Show all months
->>> In each month show total hours and total money made
-
 >Total page
 >> One big statistics page
 >>> Average salary each month
@@ -30,8 +25,6 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >>> Total money taxed
 
 >Header for week page
-> Create all days in the week as well and only populate those that has an entry
->> Create an array with all the containers and use date.getDay() to choose which index to use as parent
 
 >MONTH
 >> Change to 35 grid layout
