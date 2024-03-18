@@ -1,4 +1,4 @@
-import { addDays, endOfMonth, endOfWeek, endOfYear, startOfMonth, startOfWeek, startOfYear } from "date-fns"
+import { addDays, endOfMonth, endOfWeek, endOfYear, setMonth, startOfMonth, startOfWeek, startOfYear } from "date-fns"
 // Takes a converted array with start and end time (17.50-19.00) f.eks
 function timeInScope(timeScopeArray, workedFrom, workedTo) {
     let startingTime;
@@ -31,6 +31,9 @@ function entriesInMonth(entries) {
 function entriesLastMonth(entries) {
     let start = new Date()
     let end = new Date();
+    if (entries[0] == undefined) {
+        start = startOfMonth(start.setMonth(start.getMonth() - 1))
+    }
 
     start = startOfMonth(start.setMonth(start.getMonth() - 1))
     end = endOfMonth(end.setMonth(end.getMonth() - 1))

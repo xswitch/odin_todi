@@ -437,7 +437,6 @@ h3.monthCardMoney {
 }
 
 .homeCardTitle {
-    color: white;
     text-align: center;
 }
 
@@ -455,20 +454,26 @@ h3.monthCardMoney {
     cursor: pointer;
 }
 
-.newEntryContainer {
+.newEntryContainer,
+.newProjectContainer {
     display: grid;
     gap: 15px;
     padding: 15px;
     align-items: center;
 }
 
-.newEntryContainer>input,
-.newEntryContainer>select {
+input.homeCard,
+select.homeCard {
     background-color: var(--color-surface-300);
-    border-radius: 15px;
-    padding: 0 15px;
+    border-radius: 10px;
+    padding: 10px 15px;
     font-size: 1.5rem;
     border: none;
     height: 100%;
     color: white;
+    width: 100%;
+}
+
+.newProjectContainer {
+    align-content: space-between;
 }

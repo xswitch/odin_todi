@@ -20,7 +20,7 @@ export default function createPage(type, project) {
             createMonth(entriesInMonth(projectEntries));
             break;
         case 'lastMonth':
-            createMonth(entriesLastMonth(projectEntries));
+            createMonth(entriesLastMonth(projectEntries), true);
             break;
         case 'year':
             createYear(entriesThisYear(projectEntries))
@@ -178,11 +178,13 @@ function createWeek(entries) {
     
 }
 
-function createMonth(entries) {
-    const daysInMonth = getDaysInMonth(entries[0].date)
+function createMonth(entries, lastMonth) {
+    const month = new Date()
+    if (lastMonth) month.setMonth(month.getMonth()-1);
+    const daysInMonth = getDaysInMonth(month)
     const monthContainer = new El('div', {classes: 'monthContainer', parent: '.pageContent'});
     const dateContainers = []
-    let start = startOfMonth(entries[0].date)
+    let start = startOfMonth(month)
 
     for (let i = 0; i < daysInMonth; i++) {
         dateContainers.push(new El('div', {

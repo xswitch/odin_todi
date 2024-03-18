@@ -10,10 +10,10 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 > a new function for each type of page that gets called from the createPage function
 
 > Finish home page
->> Create new projects
->> Create new entries -- WORKING ON THIS
+>> Create new projects -- WORKS - NEED FEEDBACK ON SUCCESS AND FAILURE
+>> Create new entries -- WORKS - Need feedback for error and when new entries are created
 >> Overview from the month - total hours with benefits, kinda like the cards in week
->> Change scopes
+>> Change scopes -- WORKING ON -- Choose between a specific day or time -- If time create two time inputs - if day create 7 divs, 1 for each weekday.
 >> Add tax, to check final payment (brutto netto)
 
 >Total page

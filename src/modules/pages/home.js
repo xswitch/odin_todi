@@ -1,5 +1,7 @@
 import { controller } from "../..";
+import createCategory from "../categoryEntry";
 import El from "../domStuff/createEl";
+import { createStoredCategories, removeAllCategories, setUpButtonsClassToggle } from "../domStuff/navigation";
 import WorkEntry from "../workEntry";
 
 function createHome() {
@@ -21,7 +23,7 @@ function createHome() {
     }
 
     const newEntryCard = {
-        newEntryTitle: new El('h1', {classes: 'homeCard homeCardTitle', parent: containers.newEntryContainer.element, text: 'NEW ENTRY'}),
+        newEntryTitle: new El('h1', {classes: 'homeCard homeCardTitle purple', parent: containers.newEntryContainer.element, text: 'NEW ENTRY'}),
         newEntryDate: new El('input', {classes: 'homeCard homeCardDate', parent: containers.newEntryContainer.element, properties: {type: 'date'}}),
         newEntryFromTime: new El('input', {classes: 'homeCard homeCardDate', parent: containers.newEntryContainer.element, properties: {type: 'time'}}),
         newEntryToTime: new El('input', {classes: 'homeCard homeCardDate', parent: containers.newEntryContainer.element, properties: {type: 'time'}}),
@@ -29,11 +31,28 @@ function createHome() {
         newEntryButton: new El('button', { classes: 'homeCard homeCardButton', parent: containers.newEntryContainer.element, text: 'CREATE'}),
     }
 
+    // NEW ENTRY SUBMITTED
     newEntryCard.newEntryButton.element.addEventListener('click', () => {
         controller.workEntries.push(new WorkEntry(newEntryCard.newEntryDate.element.value,
         newEntryCard.newEntryFromTime.element.value,
         newEntryCard.newEntryToTime.element.value,
         newEntryCard.newEntryProjectContainer.element.value))
+    })
+
+    const newProjectCard = {
+        newProjectTitle: new El('h1', {classes: 'homeCard homeCardTitle purple', parent: containers.newProjectContainer.element, text: 'NEW PROJECT'}),
+        newProjectName: new El('input', {classes: 'homeCard homeCardDate', parent: containers.newProjectContainer.element, properties: {placeholder: 'Project Name'}}),
+        newProjectButton: new El('button', { classes: 'homeCard homeCardButton', parent: containers.newProjectContainer.element, text: 'CREATE'}),
+    }
+
+    // NEW PROJECT SUBMITTED
+    newProjectCard.newProjectButton.element.addEventListener('click', () => {
+        controller.categories.push(createCategory(newProjectCard.newProjectName.element.value.replace(' ', ''), newProjectCard.newProjectName.element.value))
+        removeAllCategories()
+        createStoredCategories(controller.categories)
+        setUpButtonsClassToggle()
+        removeAllChildren(newEntryCard.newEntryProjectContainer.element);
+        populateSelect(newEntryCard.newEntryProjectContainer.element, controller.categories, 'newEntryOption')
     })
 
     populateSelect(newEntryCard.newEntryProjectContainer.element, controller.categories, 'newEntryOption')

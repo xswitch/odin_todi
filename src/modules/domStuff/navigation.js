@@ -99,6 +99,13 @@ function createStoredCategories(categoriesArray) {
     })
 }
 
+function removeAllCategories() {
+    const buttons = document.querySelectorAll('.projectButton')
+    const labels = document.querySelectorAll('.navLabel')
+    buttons.forEach(button => button.remove())
+    labels.forEach(label => label.remove());
+}
+
 (function() {
     const homeButton = document.querySelector('.homeButton');
     homeButton.addEventListener('click', () => {
@@ -110,4 +117,4 @@ function createStoredCategories(categoriesArray) {
     })
 })()
 
-export {setUpButtonsClassToggle, resetPage, createStoredCategories}
+export {setUpButtonsClassToggle, resetPage, createStoredCategories, setUpCategory, removeAllCategories}

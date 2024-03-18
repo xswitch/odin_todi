@@ -8,16 +8,10 @@ import createHome from './modules/pages/home';
 const controller = (function () {
     let currentPage = ['home', 'default'];
     const workEntries = [
-        new WorkEntry('2024-03-18', '07:30', '14:45', 'bryne'),
-        new WorkEntry('2024-03-19', '07:30', '14:45', 'bryne'),
-        new WorkEntry('2024-03-20', '07:30', '14:45', 'bryne'),
-        new WorkEntry('2024-03-21', '15:15', '22:00', 'bryne'),
     ];
     
     const categories = [
         createCategory('All Projects', 'default'),
-        createCategory('Blåsenborg', 'blåsenborg'),
-        createCategory('Bryne', 'bryne')
     ]
     
     const scopes = [
@@ -44,6 +38,5 @@ const controller = (function () {
     return {workEntries, categories, scopes, getCurrentPage, setCurrentPage, getEntriesByProject}
 })()
 createStoredCategories(controller.categories)
-setUpButtonsClassToggle()
 createHome()
 export {controller}
