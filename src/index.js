@@ -8,20 +8,10 @@ import createHome from './modules/pages/home';
 const controller = (function () {
     let currentPage = ['home', 'default'];
     const workEntries = [
-        new WorkEntry('2024-03-06', '10:30', '20:30', 'blåsenborg'),
-        new WorkEntry('2024-02-07', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-02-08', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-02-09', '08:00', '18:00', 'blåsenborg'),
-        new WorkEntry('2024-02-10', '08:00', '18:00', 'bryne'),
-        new WorkEntry('2024-03-11', '11:30', '23:30', 'bryne'),
-        new WorkEntry('2024-03-12', '11:30', '23:30', 'bryne'),
-        new WorkEntry('2024-03-13', '11:30', '23:30', 'blåsenborg'),
-        new WorkEntry('2024-03-14', '11:30', '23:30', 'bryne'),
-        new WorkEntry('2024-03-15', '11:30', '23:30', 'blåsenborg'),
-        new WorkEntry('2024-03-16', '11:30', '23:30', 'blåsenborg'),
-        new WorkEntry('2024-03-17', '11:30', '23:30', 'blåsenborg'),
-        new WorkEntry('2024-03-06', '11:30', '23:30', 'blåsenborg'),
-        new WorkEntry('2024-03-01', '08:00', '18:00', 'blåsenborg'),
+        new WorkEntry('2024-03-18', '07:30', '14:45', 'bryne'),
+        new WorkEntry('2024-03-19', '07:30', '14:45', 'bryne'),
+        new WorkEntry('2024-03-20', '07:30', '14:45', 'bryne'),
+        new WorkEntry('2024-03-21', '15:15', '22:00', 'bryne'),
     ];
     
     const categories = [

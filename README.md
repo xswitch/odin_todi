@@ -11,7 +11,7 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 
 > Finish home page
 >> Create new projects
->> Create new entries
+>> Create new entries -- WORKING ON THIS
 >> Overview from the month - total hours with benefits, kinda like the cards in week
 >> Change scopes
 >> Add tax, to check final payment (brutto netto)
@@ -39,6 +39,7 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >> A small circle that shows amount of entries in each button
 
 > FUNCTIONALITY
+>> Add entries
 >> Remove projects - also removes all entries in that project
 >> Remove entries
 >> Edit entries

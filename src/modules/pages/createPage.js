@@ -145,7 +145,7 @@ function createWeek(entries) {
         const text1 = new El('h1', {
             classes: 'headerText white',
             parent: headerContainer,
-            text: 'This Week: '
+            text: 'This Week '
         })
         const weekHoursContainer = new El('div', {
             classes: 'weekHeaderHours',

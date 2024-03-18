@@ -2,6 +2,8 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 body {
@@ -277,7 +279,7 @@ span.payName {
 }
 
 .totalPayContainer {
-    padding: 15px;
+    padding: 5px;
 }
 
 /* MONTH */
@@ -428,4 +430,45 @@ h3.monthCardMoney {
 .homeContainer>div {
     background-color: var(--color-surface-200);
     border-radius: 25px;
+}
+
+.homeCard {
+    font-size: 2rem;
+}
+
+.homeCardTitle {
+    color: white;
+    text-align: center;
+}
+
+.homeCardButton {
+    background-color: var(--color-primary-600);
+    color: black;
+    padding: 5px;
+    border: 2px solid var(--color-primary-600);
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.homeCardButton:hover {
+    box-shadow: 0 0 15px 1px var(--color-primary-600);
+    cursor: pointer;
+}
+
+.newEntryContainer {
+    display: grid;
+    gap: 15px;
+    padding: 15px;
+    align-items: center;
+}
+
+.newEntryContainer>input,
+.newEntryContainer>select {
+    background-color: var(--color-surface-300);
+    border-radius: 15px;
+    padding: 0 15px;
+    font-size: 1.5rem;
+    border: none;
+    height: 100%;
+    color: white;
 }
