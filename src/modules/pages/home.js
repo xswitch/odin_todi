@@ -52,7 +52,7 @@ function createHome() {
     // NEW PROJECT SUBMITTED
     newProjectCard.newProjectButton.element.addEventListener('click', () => {
         controller.categories.push(createCategory(newProjectCard.newProjectName.element.value.replace(' ', ''), newProjectCard.newProjectName.element.value))
-        toast.success(`New project "${newProjectCard.newProjectName.element.value}" created.`)
+        toast.success(`Project "${newProjectCard.newProjectName.element.value}" created successfully!`)
         removeAllCategories()
         createStoredCategories(controller.categories)
         setUpButtonsClassToggle()
@@ -115,9 +115,11 @@ function populateWithScopes(scopeContainer, scopes) {
 }
 
 function removeAllChildren(element, excludeClass = false) {
+    console.log(element)
     const children = Array.from(element.children)
+    console.log(children)
     children.forEach(child => {
-        if (child.classList.contains('newEntryOption')) return;
+        if (child.classList.contains(excludeClass)) return;
         child.remove()
     })
 }
