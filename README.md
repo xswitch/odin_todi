@@ -5,9 +5,8 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 
 \\ FOR TOMORROW
 
-> Find icons that fit the theme
+> Find icons that fit the theme -- EDIT / DELETE ICONS -- DATE / TIME FOR CHOOSING day or time in new scope -- Something for the creation buttons
 
-> a new function for each type of page that gets called from the createPage function
 
 >>>>> WORKING ON
 > Need validation for creating new entries and projects. Use toast system to show an error or success. 
@@ -37,13 +36,24 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >> A circle around Today
 >> Month and year in header
 
+> YEAR
+>> Ability to click a month and have it shown like "month and last month" pages
+
 > NAV
 >> A small circle that shows amount of entries in each button
 
 > FUNCTIONALITY
 >> Add entries
+>>> Verification -- need a date, start and end time, and the date should not be occupied.
+
 >> Remove projects - also removes all entries in that project
->> Remove entries
->> Edit entries
+>>> Edit and remove buttons next to project titles in nav bar
+
+>> Remove / edit entries
+>>> Ability to click a card in week or month -- or a month in year where you can see and edit for that month.
+
 >> Create projects
+>>> Verification -- Need a unique name greater than 1 character.
+
 >> Add scopes
+>>> Start and end time or specific day

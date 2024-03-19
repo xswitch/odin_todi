@@ -90,12 +90,13 @@ body {
   
 /* Track */
 ::-webkit-scrollbar-track {
-    background: var(--color-surface-600);
+    background: var(--color-surface-300);
 }
-  
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--color-surface-300);
+    background: var(--color-surface-600);
+    border: 2px solid var(--color-primary-600);
 }
   
 /* Handle on hover */
