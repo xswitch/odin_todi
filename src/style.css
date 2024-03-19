@@ -80,6 +80,27 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: max-content;
+    overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--color-surface-600);
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--color-surface-300);
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-surface-400);
 }
 
 .navButton {
@@ -454,8 +475,13 @@ h3.monthCardMoney {
     cursor: pointer;
 }
 
+.homeCardButton:active {
+    transform: scale(0.95);
+}
+
 .newEntryContainer,
-.newProjectContainer {
+.newProjectContainer,
+.scopeContainer {
     display: grid;
     gap: 15px;
     padding: 15px;
@@ -474,6 +500,49 @@ select.homeCard {
     width: 100%;
 }
 
-.newProjectContainer {
+.newProjectContainer,
+.scopeContainer {
     align-content: space-between;
+}
+
+
+.scopeContainer {
+    grid-column: span 2;
+}
+
+.scopeOverview {
+    background-color: var(--color-surface-300);
+    background-color: rgba(30, 30, 30, 0.8);
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 2.5rem;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.currentScopeHeader {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.scopeHeaderContainer,
+.scopeInfoContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.currentScopeInfo {
+    font-size: 1.1rem;
+    color: var(--color-surface-600)
+}
+
+/* TOAST */
+
+button.toast-close {
+    color: black;
 }

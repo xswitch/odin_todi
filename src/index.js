@@ -1,9 +1,9 @@
-import WorkEntry from './modules/workEntry';
 import createScope from './modules/scopeEntry';
 import './style.css';
 import { createStoredCategories, setUpButtonsClassToggle } from './modules/domStuff/navigation';
 import createCategory from './modules/categoryEntry';
 import createHome from './modules/pages/home';
+import "toastify-js/src/toastify.css"
 
 const controller = (function () {
     let currentPage = ['home', 'default'];
@@ -37,6 +37,9 @@ const controller = (function () {
 
     return {workEntries, categories, scopes, getCurrentPage, setCurrentPage, getEntriesByProject}
 })()
+
 createStoredCategories(controller.categories)
+setUpButtonsClassToggle()
 createHome()
+
 export {controller}
