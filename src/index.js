@@ -4,10 +4,12 @@ import { createStoredCategories, setUpButtonsClassToggle } from './modules/domSt
 import createCategory from './modules/categoryEntry';
 import createHome from './modules/pages/home';
 import "toastify-js/src/toastify.css"
+import WorkEntry from './modules/workEntry';
 
 const controller = (function () {
     let currentPage = ['home', 'default'];
     const workEntries = [
+        new WorkEntry('2024-03-22', '07:00', '10:00', 'default')
     ];
     
     const categories = [
@@ -41,5 +43,4 @@ const controller = (function () {
 createStoredCategories(controller.categories)
 setUpButtonsClassToggle()
 createHome()
-
 export {controller}

@@ -6,11 +6,11 @@ const toast = (function() {
             text: toastText,
             className: 'toastSuccess',
             style: {
-                background: 'rgb(130, 250, 130)',
+                background: 'rgb(100, 250, 100)',
                 color: 'black',
-                borderRadius: '10px'
+                borderRadius: '5px'
             },
-            duration: 60000,
+            duration: 4000,
             close: true,
             gravity: "bottom", // `top` or `bottom`
             stopOnFocus: true, // Prevents dismissing of toast on hover,
@@ -21,7 +21,12 @@ const toast = (function() {
         Toastify({
             text: toastText,
             className: 'toastError',
-            duration: 6000,
+            style: {
+                background: 'rgb(250, 100, 100)',
+                color: 'black',
+                borderRadius: '5px'
+            },
+            duration: 4000,
             close: true,
             gravity: "bottom", // `top` or `bottom`
             stopOnFocus: true, // Prevents dismissing of toast on hover,

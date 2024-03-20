@@ -9,7 +9,6 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 
 
 >>>>> WORKING ON
-> Need validation for creating new entries and projects. Use toast system to show an error or success. 
 > Change scopes -- WORKING ON -- Choose between a specific day or time -- If time create two time inputs - if day create 7 divs, 1 for each weekday.
 >> Use a card to define new scope and remove button from the card displaying scopes
 
@@ -43,8 +42,6 @@ An app that calculates what you can expect to get based of hourly pay with diffe
 >> A small circle that shows amount of entries in each button
 
 > FUNCTIONALITY
->> Add entries
->>> Verification -- need a date, start and end time, and the date should not be occupied.
 
 >> Remove projects - also removes all entries in that project
 >>> Edit and remove buttons next to project titles in nav bar

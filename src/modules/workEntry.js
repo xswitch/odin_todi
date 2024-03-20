@@ -27,4 +27,8 @@ export default class WorkEntry {
         return this.project;
     }
 
+    get fullDate() {
+        return [this.date.getFullYear(), this.date.getMonth()+1, this.date.getDate()]
+    }
+
 }

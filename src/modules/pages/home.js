@@ -5,6 +5,7 @@ import El from "../domStuff/createEl";
 import { createStoredCategories, removeAllCategories, setUpButtonsClassToggle } from "../domStuff/navigation";
 import WorkEntry from "../workEntry";
 import { toast } from "../domStuff/notification";
+import { validateNewEntry, validateNewProject } from "../domStuff/validate";
 
 function createHome() {
     const header = document.querySelector('.pageHeader');
@@ -36,28 +37,42 @@ function createHome() {
 
     // NEW ENTRY SUBMITTED
     newEntryCard.newEntryButton.element.addEventListener('click', () => {
-        controller.workEntries.push(new WorkEntry(newEntryCard.newEntryDate.element.value,
-        newEntryCard.newEntryFromTime.element.value,
-        newEntryCard.newEntryToTime.element.value,
-        newEntryCard.newEntryProjectContainer.element.value))
+        const values = {
+            date: newEntryCard.newEntryDate.element.value,
+            fromTime: newEntryCard.newEntryFromTime.element.value,
+            toTime: newEntryCard.newEntryToTime.element.value,
+            project: newEntryCard.newEntryProjectContainer.element.value,
+        }
+        const isValid = validateNewEntry(values)
+        if (isValid === true) {
+            controller.workEntries.push(new WorkEntry(values.date, values.fromTime, values.toTime, values.project))
+            toast.success(`Entry created for ${newEntryCard.newEntryProjectContainer.element.textContent} on ${values.date}`)
+        } else {
+            toast.error(isValid)
+        }
     })
 
     // NEW PROJECT CARD
     const newProjectCard = {
         newProjectTitle: new El('h1', {classes: 'homeCard homeCardTitle purple', parent: containers.newProjectContainer.element, text: 'NEW PROJECT'}),
-        newProjectName: new El('input', {classes: 'homeCard homeCardDate', parent: containers.newProjectContainer.element, properties: {placeholder: 'Project Name'}}),
+        newProjectName: new El('input', {classes: 'homeCard homeCardProject', parent: containers.newProjectContainer.element, properties: {placeholder: 'Project Name'}}),
         newProjectButton: new El('button', { classes: 'homeCard homeCardButton', parent: containers.newProjectContainer.element, text: 'CREATE'}),
     }
 
     // NEW PROJECT SUBMITTED
     newProjectCard.newProjectButton.element.addEventListener('click', () => {
-        controller.categories.push(createCategory(newProjectCard.newProjectName.element.value.replace(' ', ''), newProjectCard.newProjectName.element.value))
-        toast.success(`Project "${newProjectCard.newProjectName.element.value}" created successfully!`)
-        removeAllCategories()
-        createStoredCategories(controller.categories)
-        setUpButtonsClassToggle()
-        removeAllChildren(newEntryCard.newEntryProjectContainer.element);
-        populateSelect(newEntryCard.newEntryProjectContainer.element, controller.categories, 'newEntryOption')
+        const isValid = validateNewProject(newProjectCard.newProjectName.element.value)
+        if (isValid[0] === false) {
+            toast.error(isValid[1])
+        } else {
+            controller.categories.push(createCategory(newProjectCard.newProjectName.element.value, newProjectCard.newProjectName.element.value.replace(' ', '')))
+            toast.success(`Project "${newProjectCard.newProjectName.element.value}" created successfully!`)
+            removeAllCategories()
+            createStoredCategories(controller.categories)
+            setUpButtonsClassToggle()
+            removeAllChildren(newEntryCard.newEntryProjectContainer.element);
+            populateSelect(newEntryCard.newEntryProjectContainer.element, controller.categories, 'newEntryOption')
+        }
     })
 
     // NEW SCOPE CARD
@@ -115,9 +130,7 @@ function populateWithScopes(scopeContainer, scopes) {
 }
 
 function removeAllChildren(element, excludeClass = false) {
-    console.log(element)
     const children = Array.from(element.children)
-    console.log(children)
     children.forEach(child => {
         if (child.classList.contains(excludeClass)) return;
         child.remove()
